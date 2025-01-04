@@ -1,0 +1,23 @@
+name: Environment Scope Tests
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-manual:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Bash environment
+        shell: bash
+        run: env
+
+      - name: Bash environment executed script
+        shell: bash
+        run: script.sh
+
+      - name: Bash environment sourced script
+        shell: bash
+        run: source script.sh
