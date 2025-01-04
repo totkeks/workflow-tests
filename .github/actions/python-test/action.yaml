@@ -1,0 +1,7 @@
+name: Python Test
+
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: python3 script.py
