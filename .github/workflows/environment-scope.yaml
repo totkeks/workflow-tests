@@ -40,3 +40,6 @@ jobs:
       - name: Python script via exec
         shell: python
         run: exec(open("script.py").read())
+
+      - name: Python script via composite action
+        uses: ./.github/actions/python-test
