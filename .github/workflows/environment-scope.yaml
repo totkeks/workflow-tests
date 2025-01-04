@@ -16,7 +16,7 @@ jobs:
 
       - name: Bash environment executed script
         shell: bash
-        run: script.sh
+        run: ./script.sh
 
       - name: Bash environment sourced script
         shell: bash
