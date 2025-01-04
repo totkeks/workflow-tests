@@ -12,15 +12,23 @@ jobs:
 
       - name: Bash environment
         shell: bash
-        run: env
+        run: |
+          env | sort > env.txt
+          chmod +x script.sh && ./script.sh | sort > bash_executed.txt
+          source script.sh | sort > bash_sourced.txt
+          echo "executed"
+          diff env.txt bash_executed.txt
+          echo "sourced"
+          diff env.txt bash_sourced.txt
+          
+      - name: Python inline script
+        shell: python
+        run: |
+          import os
 
-      - name: Bash environment executed script
-        shell: bash
-        run: chmod +x script.sh && ./script.sh | sort > executed_output.txt
-
-      - name: Bash environment sourced script
-        shell: bash
-        run: source script.sh | sort > sourced_output.txt
-
-      - name: Compare outputs
-        run: diff sourced_output.txt executed_output.txt || true
+          def print_env_variables():
+              for key, value in os.environ.items():
+                  print(f"{key}={value}")
+          
+          if __name__ == "__main__":
+              print_env_variables()
