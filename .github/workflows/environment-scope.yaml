@@ -23,4 +23,4 @@ jobs:
         run: source script.sh | sort > sourced_output.txt
 
       - name: Compare outputs
-        run: diff sourced_outputs.txt executed_outputs.txt
+        run: diff sourced_output.txt executed_output.txt
