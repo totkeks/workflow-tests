@@ -32,3 +32,11 @@ jobs:
           
           if __name__ == "__main__":
               print_env_variables()
+
+      - name: Python script via bash
+        shell: bash
+        run: python script.py
+
+      - name: Python script via exec
+        shell: python
+        run: exec(open("script.py").read())
